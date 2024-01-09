@@ -1,0 +1,28 @@
+func main() {
+	cnp := make(chan func(), 10)
+	for i := 0; i < 4; i++ {
+		go func() {
+			for f := range cnp {
+				f()
+			}
+		}()
+	}
+	cnp <- func() {
+		fmt.Println("HERE1")
+	}
+	fmt.Println("Hello")
+}
+
+...
+in this code attempting to do
+    Task Queue:
+    It can act as a simple task queue. Functions representing tasks can be sent to the channel, and worker goroutines can pick up and execute these tasks.
+
+    Load Balancing:
+    This pattern is helpful for basic load balancing across multiple worker goroutines. Since there are multiple workers, tasks can be distributed among them.
+
+    Rate Limiting:
+    The buffered channel can also serve as a means to rate limit the execution of tasks. By adjusting the buffer size, you
+    
+    Async Processing:
+    It allows for asynchronous processing of functions. You can queue functions to be executed and continue with other processing in the meantime.
