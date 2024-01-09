@@ -24,5 +24,5 @@ ip addr show docker0 | grep -Po 'inet \K[\d.]+'
 
 5.Run the image in your loclhost in 8081 port number
 ```
-sudo docker run --name="api" --env-file=.env -p 8081:8081 --net=bridge -d ghcr.io/rajendro1/accuknox-api-main
+sudo docker run --name="api" --env-file=.env -p 8081:8081 --net=bridge -d ghcr.io/rajendro1/accuknox-api:main
 ```
